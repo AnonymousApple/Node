@@ -2,110 +2,97 @@
   "_args": [
     [
       {
-        "raw": "acorn-dynamic-import@^2.0.0",
+        "raw": "asn1.js@^4.0.0",
         "scope": null,
-        "escapedName": "acorn-dynamic-import",
-        "name": "acorn-dynamic-import",
-        "rawSpec": "^2.0.0",
-        "spec": ">=2.0.0 <3.0.0",
+        "escapedName": "asn1.js",
+        "name": "asn1.js",
+        "rawSpec": "^4.0.0",
+        "spec": ">=4.0.0 <5.0.0",
         "type": "range"
       },
-      "/Users/timothy/Desktop/node/node_modules/webpack"
+      "/Users/timothy/Desktop/node/node_modules/parse-asn1"
     ]
   ],
-  "_from": "acorn-dynamic-import@>=2.0.0 <3.0.0",
-  "_id": "acorn-dynamic-import@2.0.2",
+  "_from": "asn1.js@>=4.0.0 <5.0.0",
+  "_id": "asn1.js@4.9.2",
   "_inCache": true,
-  "_location": "/acorn-dynamic-import",
-  "_nodeVersion": "4.7.2",
+  "_location": "/asn1.js",
+  "_nodeVersion": "8.0.0",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/acorn-dynamic-import-2.0.2.tgz_1488318955046_0.037065627751871943"
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/asn1.js-4.9.2.tgz_1509459889789_0.450335755944252"
   },
   "_npmUser": {
-    "name": "jordangens",
-    "email": "jordangens@gmail.com"
+    "name": "indutny",
+    "email": "fedor@indutny.com"
   },
-  "_npmVersion": "2.15.11",
+  "_npmVersion": "5.5.1",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "acorn-dynamic-import@^2.0.0",
+    "raw": "asn1.js@^4.0.0",
     "scope": null,
-    "escapedName": "acorn-dynamic-import",
-    "name": "acorn-dynamic-import",
-    "rawSpec": "^2.0.0",
-    "spec": ">=2.0.0 <3.0.0",
+    "escapedName": "asn1.js",
+    "name": "asn1.js",
+    "rawSpec": "^4.0.0",
+    "spec": ">=4.0.0 <5.0.0",
     "type": "range"
   },
   "_requiredBy": [
-    "/webpack"
+    "/parse-asn1"
   ],
-  "_resolved": "https://registry.npmjs.org/acorn-dynamic-import/-/acorn-dynamic-import-2.0.2.tgz",
-  "_shasum": "c752bd210bef679501b6c6cb7fc84f8f47158cc4",
+  "_resolved": "https://registry.npmjs.org/asn1.js/-/asn1.js-4.9.2.tgz",
+  "_shasum": "8117ef4f7ed87cd8f89044b5bff97ac243a16c9a",
   "_shrinkwrap": null,
-  "_spec": "acorn-dynamic-import@^2.0.0",
-  "_where": "/Users/timothy/Desktop/node/node_modules/webpack",
+  "_spec": "asn1.js@^4.0.0",
+  "_where": "/Users/timothy/Desktop/node/node_modules/parse-asn1",
   "author": {
-    "name": "Jordan Gensler",
-    "email": "jordangens@gmail.com"
+    "name": "Fedor Indutny"
   },
   "bugs": {
-    "url": "https://github.com/kesne/acorn-dynamic-import/issues"
+    "url": "https://github.com/indutny/asn1.js/issues"
   },
   "dependencies": {
-    "acorn": "^4.0.3"
+    "bn.js": "^4.0.0",
+    "inherits": "^2.0.1",
+    "minimalistic-assert": "^1.0.0"
   },
-  "description": "Support dynamic imports in acorn",
+  "description": "ASN.1 encoder and decoder",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-eslint": "^7.1.1",
-    "babel-preset-airbnb": "^2.1.1",
-    "babel-register": "^6.18.0",
-    "chai": "^3.0.0",
-    "eslint": "^3.10.2",
-    "eslint-config-airbnb-base": "^10.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "in-publish": "^2.0.0",
-    "mocha": "^2.2.5",
-    "rimraf": "^2.5.4",
-    "safe-publish-latest": "^1.1.1"
+    "mocha": "^2.3.4"
   },
   "directories": {},
   "dist": {
-    "shasum": "c752bd210bef679501b6c6cb7fc84f8f47158cc4",
-    "tarball": "https://registry.npmjs.org/acorn-dynamic-import/-/acorn-dynamic-import-2.0.2.tgz"
+    "integrity": "sha512-b/OsSjvWEo8Pi8H0zsDd2P6Uqo2TK2pH8gNLSJtNLM2Db0v2QaAZ0pBQJXVjAn4gBuugeVDr7s63ZogpUIwWDg==",
+    "shasum": "8117ef4f7ed87cd8f89044b5bff97ac243a16c9a",
+    "tarball": "https://registry.npmjs.org/asn1.js/-/asn1.js-4.9.2.tgz"
   },
-  "gitHead": "bbde06efe095935575ec6454223d0a1d3b4e748e",
-  "homepage": "https://github.com/kesne/acorn-dynamic-import",
+  "gitHead": "a67b5b5c827bf3856b3045f331a9f04267d96b9b",
+  "homepage": "https://github.com/indutny/asn1.js",
+  "keywords": [
+    "asn.1",
+    "der"
+  ],
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "lib/asn1.js",
   "maintainers": [
     {
-      "name": "jordangens",
-      "email": "jordangens@gmail.com"
+      "name": "fedor.indutny",
+      "email": "fedor.indutny@gmail.com"
+    },
+    {
+      "name": "indutny",
+      "email": "fedor@indutny.com"
     }
   ],
-  "name": "acorn-dynamic-import",
+  "name": "asn1.js",
   "optionalDependencies": {},
   "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kesne/acorn-dynamic-import.git"
+    "url": "git+ssh://git@github.com/indutny/asn1.js.git"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
-    "check-changelog": "expr $(git status --porcelain 2>/dev/null| grep \"^\\s*M.*CHANGELOG.md\" | wc -l) >/dev/null || (echo 'Please edit CHANGELOG.md' && exit 1)",
-    "check-only-changelog-changed": "(expr $(git status --porcelain 2>/dev/null| grep -v \"CHANGELOG.md\" | wc -l) >/dev/null && echo 'Only CHANGELOG.md may have uncommitted changes' && exit 1) || exit 0",
-    "lint": "eslint .",
-    "postversion": "git commit package.json CHANGELOG.md -m \"v$npm_package_version\" && npm run tag && git push && git push --tags",
-    "prepublish": "in-publish && safe-publish-latest && npm run build || not-in-publish",
-    "preversion": "npm run test && npm run check-changelog && npm run check-only-changelog-changed",
-    "tag": "git tag v$npm_package_version",
-    "test": "npm run lint && npm run tests-only",
-    "tests-only": "mocha",
-    "version:major": "npm --no-git-tag-version version major",
-    "version:minor": "npm --no-git-tag-version version minor",
-    "version:patch": "npm --no-git-tag-version version patch"
+    "test": "mocha --reporter spec test/*-test.js && cd rfc/2560 && npm i && npm test && cd ../../rfc/5280 && npm i && npm test"
   },
-  "version": "2.0.2"
+  "version": "4.9.2"
 }
