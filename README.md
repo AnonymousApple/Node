@@ -1,100 +1,50 @@
-# ASN1.js
+![Async Logo](https://raw.githubusercontent.com/caolan/async/master/logo/async-logo_readme.jpg)
 
-ASN.1 DER Encoder/Decoder and DSL.
+[![Build Status via Travis CI](https://travis-ci.org/caolan/async.svg?branch=master)](https://travis-ci.org/caolan/async)
+[![NPM version](https://img.shields.io/npm/v/async.svg)](https://www.npmjs.com/package/async)
+[![Coverage Status](https://coveralls.io/repos/caolan/async/badge.svg?branch=master)](https://coveralls.io/r/caolan/async?branch=master)
+[![Join the chat at https://gitter.im/caolan/async](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/caolan/async?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![libhive - Open source examples](https://www.libhive.com/providers/npm/packages/async/examples/badge.svg)](https://www.libhive.com/providers/npm/packages/async)
+[![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/async/badge?style=rounded)](https://www.jsdelivr.com/package/npm/async)
 
-## Example
 
-Define model:
+Async is a utility module which provides straight-forward, powerful functions for working with [asynchronous JavaScript](http://caolan.github.io/async/global.html). Although originally designed for use with [Node.js](https://nodejs.org/) and installable via `npm install --save async`, it can also be used directly in the browser.
+
+For Documentation, visit <https://caolan.github.io/async/>
+
+*For Async v1.5.x documentation, go [HERE](https://github.com/caolan/async/blob/v1.5.2/README.md)*
+
 
 ```javascript
-var asn = require('asn1.js');
+// for use with Node-style callbacks...
+var obj = {dev: "/dev.json", test: "/test.json", prod: "/prod.json"};
+var configs = {};
 
-var Human = asn.define('Human', function() {
-  this.seq().obj(
-    this.key('firstName').octstr(),
-    this.key('lastName').octstr(),
-    this.key('age').int(),
-    this.key('gender').enum({ 0: 'male', 1: 'female' }),
-    this.key('bio').seqof(Bio)
-  );
+async.forEachOf(obj, (value, key, callback) => {
+    fs.readFile(__dirname + value, "utf8", (err, data) => {
+        if (err) return callback(err);
+        try {
+            configs[key] = JSON.parse(data);
+        } catch (e) {
+            return callback(e);
+        }
+        callback();
+    });
+}, err => {
+    if (err) console.error(err.message);
+    // configs is now a map of JSON data
+    doSomethingWith(configs);
 });
-
-var Bio = asn.define('Bio', function() {
-  this.seq().obj(
-    this.key('time').gentime(),
-    this.key('description').octstr()
-  );
-});
 ```
-
-Encode data:
 
 ```javascript
-var output = Human.encode({
-  firstName: 'Thomas',
-  lastName: 'Anderson',
-  age: 28,
-  gender: 'male',
-  bio: [
-    {
-      time: +new Date('31 March 1999'),
-      description: 'freedom of mind'
-    }
-  ]
-}, 'der');
+// ...or ES2017 async functions
+async.mapLimit(urls, 5, async function(url) {
+    const response = await fetch(url)
+    return response.body
+}, (err, results) => {
+    if (err) throw err
+    // results is now an array of the response bodies
+    console.log(results)
+})
 ```
-
-Decode data:
-
-```javascript
-var human = Human.decode(output, 'der');
-console.log(human);
-/*
-{ firstName: <Buffer 54 68 6f 6d 61 73>,
-  lastName: <Buffer 41 6e 64 65 72 73 6f 6e>,
-  age: 28,
-  gender: 'male',
-  bio:
-   [ { time: 922820400000,
-       description: <Buffer 66 72 65 65 64 6f 6d 20 6f 66 20 6d 69 6e 64> } ] }
-*/
-```
-
-### Partial decode
-
-Its possible to parse data without stopping on first error. In order to do it,
-you should call:
-
-```javascript
-var human = Human.decode(output, 'der', { partial: true });
-console.log(human);
-/*
-{ result: { ... },
-  errors: [ ... ] }
-*/
-```
-
-#### LICENSE
-
-This software is licensed under the MIT License.
-
-Copyright Fedor Indutny, 2013.
-
-Permission is hereby granted, free of charge, to any person obtaining a
-copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to permit
-persons to whom the Software is furnished to do so, subject to the
-following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-USE OR OTHER DEALINGS IN THE SOFTWARE.
